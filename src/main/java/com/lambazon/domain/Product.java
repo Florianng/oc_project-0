@@ -8,13 +8,21 @@ public class Product {
 	private double price;
 	private double totalprice;
 
-	public Product(int id, int quantity, double price, String name, String description) {
-		setId(id);
-		setQuantity(quantity);
-		setPrice(price);
-		setName(name);
-		setDescription(description);
-	}
+    public Product(int id, int quantity, double price, String name, String description) {
+        setId(id);
+        setQuantity(quantity);
+        //Quantity <0  Impossible  -> quantity == 0
+        if (quantity < 0)
+            this.quantity = 0;
+        setPrice(price);
+        // 1000< Price <0   --> Price <0 == 0    price > 1000 == 0
+        if (price <0)
+            this.price =0;
+        if (price>1000)
+            this.price = 1000;
+        setName(name);
+        setDescription(description);
+    }
 
 	public Integer getId() {
 		return id;
